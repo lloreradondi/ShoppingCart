@@ -1,0 +1,2 @@
+# AngularRailsSkeletonApp
+# ShoppingCart
