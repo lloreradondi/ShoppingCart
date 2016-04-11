@@ -55,5 +55,10 @@ Rails.application.routes.draw do
   #   end
   root to: 'application#angular'
   resources :users
+  resources :profiles do
+    member do
+      put 'update'
+    end
+  end
   post 'user/login', :to => 'users#login'
 end

@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
   def update
     resp = User.update(params[:id], parameters)
-    if resp.created_At != nil
+    if resp.created_at != nil
       data =resp
       success = true
     else
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   end
 
   def login
-    user = User.where("username = ? or email = ?", parameters[:username], parameters[:email])
+    user = User.where("username = ? or email = ?", parameters[:user_login], parameters[:user_login])
     if !user.empty?
       saved_password = user.first.password  
       attempting_password = check_password(parameters[:salt], parameters[:password])
@@ -62,6 +62,6 @@ class UsersController < ApplicationController
   end
   private
   def parameters
-    params.permit(:id, :username, :email, :salt, :password)
+    params.permit(:id, :username, :email, :user_login, :salt, :password)
   end
 end
